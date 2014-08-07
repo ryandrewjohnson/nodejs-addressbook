@@ -120,9 +120,9 @@ For valid/required Contact fields please see `data/scehmas/contact.js`.
 ````
 	$ curl --request PATCH --data "name.givenName=firstname" http://localhost:3000/addressbook/api/v0.1/user/{user_id}/contacts/{contact_id}
 ````
-````
+```
 	$ curl --request DELETE http://localhost:3000/addressbook/api/v0.1/user/{user_id}/contacts/{contact_id}
-````
+```
 
 
 ## Author
