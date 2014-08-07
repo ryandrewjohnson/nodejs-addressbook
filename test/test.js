@@ -9,13 +9,16 @@ var should      = require('should'),
 describe('Routing', function() {
     var url = 'http://localhost:3000' + apiBaseUri;
   
-
-    // connect to DB
+    // connect to DB and delete user that we create for test
     before(function(done) {
-        mongoose.connect('mongodb://localhost/addressbook');                            
-        done();
-    });
+        mongoose.connect('mongodb://localhost/addressbook');
 
+        User.remove({ 'username' : { $in: ['ryan@myemail.com','donatello@turtles.com'] } }, function (err, result) {
+            if (err) { throw err; }
+
+            done();
+        });
+    });
 
     describe('User', function() {
         it('should create new user with username and password', function(done) {

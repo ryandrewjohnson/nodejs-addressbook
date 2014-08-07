@@ -123,7 +123,13 @@ For valid/required Contact fields please see `data/scehmas/contact.js`.
 ```
 	$ curl --request DELETE http://localhost:3000/addressbook/api/v0.1/user/{user_id}/contacts/{contact_id}
 ```
+### Run route tests
+Ensure that the application is already running before running the test command.
 
+````
+	$ cd {project root}
+	$ node_modules/.bin/grunt test
+````
 
 ## Author
 
