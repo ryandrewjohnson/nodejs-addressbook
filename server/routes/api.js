@@ -30,8 +30,8 @@ apiRoutes = function (middleware) {
      * /PATCH   - update a contact associated with user
      * /DELETE  - delete a contact associated with user
      */
-    router.get('/user/:user_id/contacts', api.contacts.getAll);
     router.post('/user/:user_id/contacts', api.contacts.add);
+    router.get('/user/:user_id/contacts', api.contacts.getAll);
     router.patch('/user/:user_id/contacts/:contact_id', api.contacts.update);
     router.delete('/user/:user_id/contacts/:contact_id', api.contacts.destroy);
    
