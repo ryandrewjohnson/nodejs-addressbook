@@ -35,6 +35,7 @@ To confirm you have successfully installed the above run the follwoing commands:
 Make sure you are in the root of the project directory that contains the `package.json` file before running below command. This will install node dependencies, run bower install, and run default grunt command.
 
 ````
+	$ cd nodejs-addressbook
 	$ npm install
 ````
 This may take a while as there are quite a few packages, but once everything is done you should now see a `node_modules` and `bower_components` folder.
