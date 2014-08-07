@@ -1,0 +1,69 @@
+<script id="contacts-template" type="text/x-handlebars-template">
+    <% _.each(contacts, function(contact) { %>
+        <tr data-contactid="<%= contact._id %>">
+            <td><%= contact.name.givenName %></td>
+            <td><%= contact.name.familyName %></td>
+            <td><%= contact.email %></td>
+            <td><%= contact.address.street %></td>
+            <td><%= contact.address.city %></td>
+            <td><%= contact.address.region %></td>
+            <td><%= contact.address.postcode %></td>
+            <td><%= contact.address.country %></td>
+            <td>
+                <button class="contact__deleteBtn btn btn-danger btn-xs">Delete</button>
+            </td>
+        </tr>
+    <% }); %>
+</script>
+
+<script id="contact-template" type="text/x-handlebars-template">
+    <td><input type="text" class="form-control" id="givenName" name="givenName" placeholder="First Name"></td>
+    <td><input type="text" class="form-control" id="familyName" name="familyName" placeholder="Last Name"></td>
+    <td><input type="email" class="form-control" id="email" name="email" placeholder="Email"></td>
+    <td><input type="text" class="form-control" id="street" name="street" placeholder="Street"></td>
+    <td><input type="text" class="form-control" id="city" name="city" placeholder="City"></td>
+    <td><input type="text" class="form-control" id="region" name="region" placeholder="Region"></td>
+    <td><input type="text" class="form-control" id="postcode" name="postcode" placeholder="Postcode"></td>
+    <td><input type="text" class="form-control" id="country" name="country" placeholder="Country"></td>
+    <td>
+        <button type="button" class="btn btn-danger btn-xs contact__cancelBtn">Cancel</button>
+        <button type="submit" class="btn btn-success btn-xs contact__submitBtn">Submit</button>
+    </td>
+</script>
+
+
+<input type="hidden" id="user_id" value="{{user_id}}">
+
+<a href="/logout" class="btn btn-danger btn-xs">Logout</a>
+
+<h1>Contact List:</h1>
+<p>User ID: {{user_id}}</p>
+
+<div class="contacts">
+    <p class="contacts__empty bg-warning">You don't have any contacts. Add some NOW!!!</p>
+    
+    <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Street</th>
+          <th>City</th>
+          <th>Region</th>
+          <th>Postcode</th>
+          <th>Country</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody class="contacts__listing">
+      </tbody>
+    </table>
+    
+    <div class="contacts__addContainer">
+    </div>
+
+    <button class="contacts_addBtn btn btn-success">Add Contact</button>
+</div>
+
+

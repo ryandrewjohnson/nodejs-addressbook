@@ -1,0 +1,24 @@
+.site-wrapper {
+    margin: 50px;
+}
+.login__form {
+    margin-top: 18px;
+}
+.bg-danger,
+.bg-warning {
+    padding: 10px;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+.contacts__empty {
+    display: none;
+    padding: 10px;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+.contact__cancelBtn {
+    margin-bottom: 5px;
+}
+.register__error {
+    display: none;
+}

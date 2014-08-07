@@ -1,0 +1,31 @@
+<div id="login-user" class="login">
+    <h2>Login</h2>
+    {{#if error}}
+        {{#each error}}
+            <p class="bg-danger">{{this}}</p>
+        {{/each}}
+    {{/if}}
+    {{#if registered}}
+        {{#each registered}}
+            <p class="bg-warning">{{this}}</p>
+        {{/each}}
+    {{/if}}
+    
+
+    <a href="/register" class="btn btn-info" role="button">Register</a>
+    <a href="/auth/google" class="btn btn-primary" role="button">Sign In with Google</a>
+
+    <form class="login__form" role="form" action="/login" method="post">
+        <div class="form-group">
+            <label for="user-email">Email:</label>
+            <input type="email" class="form-control" id="user-email" name="username" value="" placeholder="Enter email">
+        </div>
+        
+        <div class="form-group">
+            <label for="user-password">Password</label>
+            <input type="password" class="form-control" id="user-password" name="password" value="" placeholder="Password">
+        </div>
+        
+        <button type="submit" class="btn btn-success">Login</button>
+    </form>
+</div>

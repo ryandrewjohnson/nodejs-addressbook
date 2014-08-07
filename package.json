@@ -1,0 +1,46 @@
+{
+  "name": "nodejs-addressbook",
+  "version": "1.0.0",
+  "description": "nodejs-addressbook ==================",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "postinstall": "node_modules/.bin/bower install",
+    "postinstall": "node_modules/.bin/grunt",
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryandrewjohnson/nodejs-addressbook.git"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "author": "Ryan Johnson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryandrewjohnson/nodejs-addressbook/issues"
+  },
+  "dependencies": {
+    "express": "~4.7.4",
+    "mongoose": "~3.8.14",
+    "body-parser": "~1.5.2",
+    "mongoose-times": "~0.1.0",
+    "express3-handlebars": "~0.5.0",
+    "passport": "~0.2.0",
+    "passport-http": "~0.2.2",
+    "passport-local": "~1.0.0",
+    "express-session": "~1.7.2",
+    "passport-google": "~0.3.0",
+    "connect-flash": "~0.1.1"
+  },
+  "devDependencies": {
+    "grunt-cli": "~0.1.13",
+    "bower": "~1.3.8",
+    "grunt": "~0.4.5",
+    "grunt-contrib-copy": "~0.5.0",
+    "load-grunt-tasks": "~0.6.0",
+    "should": "~4.0.4",
+    "supertest": "~0.13.0",
+    "grunt-mocha-test": "~0.11.0"
+  }
+}
