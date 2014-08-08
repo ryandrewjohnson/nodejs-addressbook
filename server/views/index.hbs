@@ -17,9 +17,9 @@
 </script>
 
 <script id="contact-template" type="text/x-handlebars-template">
-    <td><input type="text" class="form-control" id="givenName" name="givenName" placeholder="First Name"></td>
-    <td><input type="text" class="form-control" id="familyName" name="familyName" placeholder="Last Name"></td>
-    <td><input type="email" class="form-control" id="email" name="email" placeholder="Email"></td>
+    <td><input type="text" class="form-control" id="givenName" name="givenName" placeholder="*First Name"></td>
+    <td><input type="text" class="form-control" id="familyName" name="familyName" placeholder="*Last Name"></td>
+    <td><input type="email" class="form-control" id="email" name="email" placeholder="*Email"></td>
     <td><input type="text" class="form-control" id="street" name="street" placeholder="Street"></td>
     <td><input type="text" class="form-control" id="city" name="city" placeholder="City"></td>
     <td><input type="text" class="form-control" id="region" name="region" placeholder="Region"></td>
@@ -64,6 +64,9 @@
     </div>
 
     <button class="contacts_addBtn btn btn-success">Add Contact</button>
+    {{#unless imported}}
+    <a href="{{oauthUrl}}" class="btn btn-primary">Import Google Contacts</a>
+    {{/unless}}
 </div>
 
 

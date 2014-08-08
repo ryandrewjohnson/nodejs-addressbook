@@ -31,7 +31,8 @@ passport.use(new GoogleStrategy({
        // try to find user, and if they don't exist create one
        User.findOne({openId: identifier}, function (err, user) {
             // if user found or error found return
-            if (err || user.length > 0) { return done(err, user); }
+            if (err) { return done(err, user); }
+            if (user) { return done(null, user); }
 
             // no user found create one with Google info
             var newUser = new User({

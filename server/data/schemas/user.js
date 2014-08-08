@@ -3,6 +3,10 @@ var user = {
         type: String,
         index: true
     },
+    imported: {
+        type: Boolean,
+        default: false
+    },
     username: {
         type: String,
         index: true,

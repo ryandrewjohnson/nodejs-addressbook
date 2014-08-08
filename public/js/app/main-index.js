@@ -1,6 +1,6 @@
 define(function (require) {
     var $ = require('jquery'),
-        Contacts = require('models/contact'),
+        Contacts = require('models/contact').collection,
         ContactsView = require('views/contacts');
 
 

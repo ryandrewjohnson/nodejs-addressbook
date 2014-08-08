@@ -28,23 +28,18 @@ contact = {
     address: {
         city: {
             type: String,
-            required: 'required'
         },
         street: {
             type: String,
-            required: 'required'
         },
         region: {
             type: String,
-            required: 'required'
         },
         postcode: {
             type: String,
-            required: 'required'
         },
         country: {
             type: String,
-            required: 'required'
         }
     }
 };

@@ -22,3 +22,6 @@
 .register__error {
     display: none;
 }
+#import-contacts .btn {
+    margin-bottom: 18px;
+}

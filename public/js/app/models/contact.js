@@ -18,5 +18,8 @@ define(function (require) {
     });
 
 
-    return ContactCollection;
+    return {
+        collection: ContactCollection,
+        model: Contact
+    };
 });
