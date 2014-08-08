@@ -7,23 +7,27 @@ var should      = require('should'),
     apiBaseUri  = require('../server/routes').apiBaseUri;
 
 describe('Routing', function() {
-    var url = 'http://localhost:3000' + apiBaseUri;
+    var url     = 'http://localhost:3000' + apiBaseUri,
+        emails  = ['ryan@myemail.com','donatello@turtles.com'];
   
-    // connect to DB and delete user that we create for test
+    // connect to DB 
     before(function(done) {
         mongoose.connect('mongodb://localhost/addressbook');
+        done();
+    });
 
-        User.remove({ 'username' : { $in: ['ryan@myemail.com','donatello@turtles.com'] } }, function (err, result) {
+    // delete dummy user's created
+    after(function (done) {
+        User.remove({ 'username' : { $in: emails } }, function (err, result) {
             if (err) { throw err; }
-
-            done();
+           done(); 
         });
     });
 
     describe('User', function() {
         it('should create new user with username and password', function(done) {
             var user = {
-                username: 'ryan@myemail.com',
+                username: emails[0],
                 password: 'password'
             };
 
@@ -36,7 +40,7 @@ describe('Routing', function() {
                 if (err) { throw err; }
           
                 res.body.should.have.property('_id');
-                res.body.username.should.equal('ryan@myemail.com');
+                res.body.username.should.equal(emails[0]);
                 res.body.password.should.equal('password');
                 done();
             });
@@ -73,7 +77,7 @@ describe('Routing', function() {
 
     describe('Contact', function() {
         // dummy contact info
-        var contact_id,
+        var contact_ids = [],
             contact = {
             _user: null,
             name: {
@@ -95,7 +99,7 @@ describe('Routing', function() {
         // We also create a contact record to use for patch,delete contact
         before(function(done){
             var newUser = new User({
-                username: 'donatello@turtles.com',
+                username: emails[1],
                 password: 'password'
             });
 
@@ -109,9 +113,17 @@ describe('Routing', function() {
                 newContact.save(function (err, result) {
                     if (err) { throw err; }
 
-                    contact_id = result._id;
+                    contact_ids.push(result._id);
                     done();
                 });
+            });
+        });
+
+        // delete dummy contact's created
+        after(function (done) {
+            Contact.remove({ _id: { $in: contact_ids } }, function (err, result) {
+                if (err) { throw err; }
+                done(); 
             });
         });
         
@@ -123,16 +135,17 @@ describe('Routing', function() {
             .expect(200)
             .end(function(err, res) {
                 if (err) { throw err; }
-          
+            
                 res.body.should.have.property('_id');
-                res.body.email.should.equal('james007@email.com');               
+                res.body.email.should.equal('james007@email.com');
+                contact_ids.push(res.body._id);               
                 done();
             });
         });
 
         it('should update existing contact', function(done) {
             request(url)
-            .patch('user/'+contact._user+'/contacts/'+contact_id)
+            .patch('user/'+contact._user+'/contacts/'+contact_ids[0])
             .send({
                 name: {
                     givenName: 'Mike',
@@ -152,7 +165,7 @@ describe('Routing', function() {
 
         it('should delete existing contact', function(done) {
             request(url)
-            .del('user/'+contact._user+'/contacts/'+contact_id)
+            .del('user/'+contact._user+'/contacts/'+contact_ids[0])
             .expect('Content-Type', /json/)
             .expect(200, done);
         });
