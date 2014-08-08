@@ -1,0 +1,45 @@
+<input type="hidden" id="user_id" value="{{user_id}}">
+
+<div id="import-contacts">
+
+<button class="importBtn btn btn-primary">Import Selected</button>
+<a href="/import/complete" class="btn btn-success">Done Import</a>
+
+<p>Check off contacts you want then click import. When you are done click Done Import to return to your contact list.</p>
+<p>A contact is required to have First Name, Last Name, and Email at a minimum. If you select a contact that is missing one of these items it will be ignored.</p>
+<p>Once you click Done you will not be able to get back to this page. WICKED user experience.</p>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Region</th>
+            <th>Postcode</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#each entries}}
+        {{#if gd:email.[0].$.address}}
+        <tr>
+            <td><input type="checkbox"></td>
+            <td class="fname">{{gd:name.[0].gd:givenName.[0]}}</td>
+            <td class="lname">{{gd:name.[0].gd:familyName.[0]}}</td>
+            <td class="email">{{gd:email.[0].$.address}}</td>
+            <td class="street">{{gd:structuredPostalAddress.[0].gd:street.[0]}}</td>
+            <td class="city">{{gd:structuredPostalAddress.[0].gd:city.[0]}}</td>
+            <td class="region">{{gd:structuredPostalAddress.[0].gd:region.[0]}}</td>
+            <td class="postcode">{{gd:structuredPostalAddress.[0].gd:postcode.[0]}}</td>
+            <td class="country">{{gd:structuredPostalAddress.[0].gd:country.[0]._}}</td>
+        </tr>
+        {{/if}}
+    {{/each}}
+    </tbody>
+</table>
+
+</div>
